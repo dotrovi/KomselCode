@@ -13,7 +13,7 @@ To run and send email,
 kalau ada cara lagi bagus untuk debug, guna cara kamu hehe
 */
 
-// just names
+// just names (deprecated, use numbers)
 function sendSecretSantaEmail() {
 
   // PIC email to get name lists (ONLY ONE)
