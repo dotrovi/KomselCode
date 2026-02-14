@@ -1,3 +1,13 @@
+/*
+- Use birthdayReminderFix1
+- change spreedsheet id to current komsel keahlian sheet
+- change myEmail to current AJK emails
+
+need fixing (malas buat hehe):
+1. Exceptions (never trust data)
+2. maybe a better way to send emails than current spaghetti implementation
+*/
+
 function birthdayReminder()
 {
   let spreadsheet = SpreadsheetApp.openById('1pK6K-srpnUZa1g-fKnzl6mfoGBZpW8hYfClHXqNbHKw'),
