@@ -15,17 +15,21 @@ Apps Script is a cloud-based JavaScript platform powered by Google Drive that le
 
 #### How to Access Apps Script
 From google form
+
 ![gf](/img/GoogleFormAppsScript.png)
 
 From google sheet
+
 ![gs](/img/GoogleSheetAppsScript.png)
 
-What you get:
+What you get
+
 ![apps script](/img/AppsScriptSample.png)
 
 #### Access Code
 
 Open the editor from the side bar
+
 ![editor](/img/editor.png)
 
 Then copy/paste the preferred code into the editor
@@ -33,6 +37,7 @@ Then copy/paste the preferred code into the editor
 #### Triggers
 Access triggers from the side bar
 Then add new trigger
+
 ![reminder trigger](/img/reminderTrigger.png)
 
 Triggers will be used for daily birthday checking (remember to save it!)
