@@ -2,21 +2,25 @@
 - Use birthdayReminderFix1
 - change spreedsheet id to current komsel keahlian sheet
 - change myEmail to current AJK emails
+- uncomment mailApp to send emails
 
 need fixing (malas buat hehe):
-1. Exceptions (never trust data)
-2. maybe a better way to send emails than current spaghetti implementation
+1. mapping of data (currently hardcoded to columns from sheet, if the sheet changes then the code will break)
+2. Exceptions (never trust data)
+3. maybe a better way to send emails than current spaghetti implementation
 */
 
 function birthdayReminder()
 {
-  let spreadsheet = SpreadsheetApp.openById('1pK6K-srpnUZa1g-fKnzl6mfoGBZpW8hYfClHXqNbHKw'),
+  // change id to current komsel keahlian sheet
+  let spreadsheet = SpreadsheetApp.openById(''),
       sheet = SpreadsheetApp.setActiveSheet(spreadsheet.getSheets()[0]),
       lastRow = sheet.getLastRow(),
       lastCol = sheet.getLastColumn(),
       data = sheet.getRange(2, 2, lastRow-1, lastCol).getValues();
-
-  const myEmail = ["hivor234@gmail.com", "praycesm@gmail.com", "shaunbryan290101@gmail.com", "rayenraymond12@gmail.com", "salehasundai0987@gmail.com", "anziedyana30@gmail.com", "pristinievinee@gmail.com", "crystalkaren2005@gmail.com", "elijahxavier23@gmail.com", "umangsengalang7@gmail.com", "essone.fith.77@gmail.com", "bluecat0215joy@gmail.com", "ashleyjaty04@gmail.com", "jeremy.geafri05@gmail.com", "aelldo@graduate.utm.my", "laurathovenin@gmail.com", "jerichoolsen@gmail.com"];
+  
+  // change myEmail to current AJK emails
+  const myEmail = ["someone@somewhere.com", "test@test.com"];
   let emailLen = myEmail.length;
 
   for (let index = 0; index < lastRow-1; index++)
@@ -33,7 +37,9 @@ function birthdayReminder()
     let today = new Date();
     today = Utilities.formatDate(today, 'GMT+8', 'dd/MM');
 
-    var url = "https://docs.google.com/spreadsheets/d/1pK6K-srpnUZa1g-fKnzl6mfoGBZpW8hYfClHXqNbHKw/edit?usp=sharing";
+    // the url of current komsel keahlian sheet
+    // change to current komsel keahlian sheet
+    var url = "";
 
     for (let i = 0; i < emailLen; i++)
     {
@@ -49,14 +55,15 @@ function birthdayReminder()
 
 function birthdayReminderFix1()
 {
-  let spreadsheet = SpreadsheetApp.openById('1pK6K-srpnUZa1g-fKnzl6mfoGBZpW8hYfClHXqNbHKw'),
+  // change id to current komsel keahlian sheet
+  let spreadsheet = SpreadsheetApp.openById(''),
       sheet = SpreadsheetApp.setActiveSheet(spreadsheet.getSheets()[0]),
       lastRow = sheet.getLastRow(),
       lastCol = sheet.getLastColumn(),
       data = sheet.getRange(2, 2, lastRow-1, lastCol).getValues();
 
-  const myEmail = ["hivor234@gmail.com", "praycesm@gmail.com", "shaunbryan290101@gmail.com", "rayenraymond12@gmail.com", "salehasundai0987@gmail.com", "anziedyana30@gmail.com", "pristinievinee@gmail.com", "crystalkaren2005@gmail.com", "elijahxavier23@gmail.com", "umangsengalang7@gmail.com", "essone.fith.77@gmail.com", "bluecat0215joy@gmail.com", "ashleyjaty04@gmail.com", "jeremy.geafri05@gmail.com", "aelldo@graduate.utm.my", "laurathovenin@gmail.com", "jerichoolsen@gmail.com"];
-  
+  // change myEmail to current AJK emails
+  const myEmail = ["someone@somewhere.com", "test@test.com"];
   let emailLen = myEmail.length;
 
     for (let index = 0; index < lastRow-1; index++)
@@ -74,9 +81,11 @@ function birthdayReminderFix1()
       let today = new Date();
       today = Utilities.formatDate(today, 'GMT+8', 'dd/MM');
 
-      //Logger.log(birthday);
+    //Logger.log(birthday);
 
-      var url = "https://docs.google.com/spreadsheets/d/1pK6K-srpnUZa1g-fKnzl6mfoGBZpW8hYfClHXqNbHKw/edit?usp=sharing";
+    // the url of current komsel keahlian sheet
+    // change to current komsel keahlian sheet
+      var url = "";
 
       if (birthday == today)
       {
@@ -93,7 +102,7 @@ function birthdayReminderFix1()
 
 function testing()
 {
-  let spreadsheet = SpreadsheetApp.openById('1pK6K-srpnUZa1g-fKnzl6mfoGBZpW8hYfClHXqNbHKw'),
+  let spreadsheet = SpreadsheetApp.openById(''),
       sheet = SpreadsheetApp.setActiveSheet(spreadsheet.getSheets()[0]),
       lastRow = sheet.getLastRow(),
       lastCol = sheet.getLastColumn(),

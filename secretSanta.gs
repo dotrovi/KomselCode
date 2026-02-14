@@ -2,11 +2,11 @@
 Basically:
 Check the code under function emailPersonal & emailFullList
 
-To run without sending email,
+To run without sending email (testing/debugging),
 1. MailApp is commented, uncomment logger
-2. Run function SecretSantaNumbersEmail
+2. Run function SecretSantaNumbersEmail (or debug)
 
-To run and send email,
+To run and send email (for real),
 1. MailApp is uncommented, comment logger
 2. Run function SecretSantaNumbersEmail ONCE ONLY
 
@@ -37,7 +37,9 @@ function sendSecretSantaEmail() {
     var itemResponse = itemResponses[0];
     body += "\nYou will be gifting to:\n";
     body += itemResponse.getResponse() + "\n\n";
-    body += "Here is the padlet link:\https://padlet.com/hivor234/gog25 (yang lama)";
+
+    // insert padlet link here
+    body += "Here is the padlet link:\n(padlet link here)";
     body += "\n\nApa2 kemusykilan bole diajukan kepada elvy :D";
 
     var recipientIndex = i + 1
@@ -62,7 +64,7 @@ function sendSecretSantaEmail() {
 function SecretSantaNumbersEmail() {
 
   // PIC email to get name lists (ONLY ONE)
-  var emailPIC = "hivor234@gmail.com";
+  var emailPIC = "";
 
   // retrieve active form & responses
   var form = FormApp.getActiveForm()
@@ -78,6 +80,7 @@ function SecretSantaNumbersEmail() {
   // let arrayNum = Array.from({length: formResponses.length}, () => Math.floor(Math.random() * 100));
 
   // this one needs a pre-filled array, then shuffle it
+  // probably a better way to do this but this is the one i can think of for now
   for (var arrayNum = [], i = 0; i < formResponses.length; i++) arrayNum[i] = i + 1;
   arrayNum = shuffle(arrayNum);
 
@@ -103,7 +106,9 @@ function SecretSantaNumbersEmail() {
     body += "\n\n\n✨------------------------------✨";
     body += "\n\tYour Number is " + arrayNum[recipientIndex] + "\n";
     body += "✨------------------------------✨";
-    body += "\n\nHere is the padlet link:\nhttps://padlet.com/hivor234/gog25";
+
+    // insert padlet link here
+    body += "\n\nHere is the padlet link:\n(padlet link here)";
     body += "\n\nApa2 kemusykilan bole diajukan kepada ivor, jeremy atau elvy :D";
 
     formResponse2 = formResponses[recipientIndex];
