@@ -1,5 +1,24 @@
-// deprecated
+/*
+Basically:
+Check the code under function emailPersonal & emailFullList
+
+To run without sending email,
+1. MailApp is commented, uncomment logger
+2. Run function SecretSantaNumbersEmail
+
+To run and send email,
+1. MailApp is uncommented, comment logger
+2. Run function SecretSantaNumbersEmail ONCE ONLY
+
+kalau ada cara lagi bagus untuk debug, guna cara kamu hehe
+*/
+
+// just names
 function sendSecretSantaEmail() {
+
+  // PIC email to get name lists (ONLY ONE)
+  var emailPIC = "hivor234@gmail.com";
+
   var form = FormApp.getActiveForm()
   var formResponses = form.getResponses();
 
@@ -34,23 +53,22 @@ function sendSecretSantaEmail() {
     var emailAddress = formResponses[recipientIndex].getRespondentEmail()
     var subject = "Gift Of Grace: Cozy Edition"
     
-
-    // CHANGE THIS BEFORE REAL DEAL
-    Logger.log("sending to: " + emailAddress + "\n" + body)
-    //MailApp.sendEmail(emailAddress, subject, body)
+    emailPersonal(emailAddress, subject, body);
   }
-  // CHANGE THIS BEFORE REAL DEAL
-  Logger.log(listSanta)
-  //MailApp.sendEmail("salehasundai0987@gmail.com", "Komsel Gift of Grace: Cozy Edition Full List", listSanta)
-  //MailApp.sendEmail("hivor234@gmail.com", "Komsel Gift of Grace: Cozy Edition Full List", listSanta)
+  emailFullList(emailPIC, listSanta);
 }
 
-// Use this one
+// numbers
 function SecretSantaNumbersEmail() {
+
+  // PIC email to get name lists (ONLY ONE)
+  var emailPIC = "hivor234@gmail.com";
+
+  // retrieve active form & responses
   var form = FormApp.getActiveForm()
   var formResponses = form.getResponses();
 
-  //Randomize list
+  // Randomize list
   formResponses = formResponses.sort(() => Math.random() - 0.5);
 
   var listSanta = 'List of Gifters and Giftees (Numbers only):\n\n'
@@ -65,14 +83,15 @@ function SecretSantaNumbersEmail() {
 
   // Send email for each one
   for (var i = 0; i < formResponses.length; i++) {
-    var body = `omo gog lagi\n`
+    var body = `LETS GO GOG 🥳🥳🥳\n`
+    body += "\n(jangan tertukar nombor ah, baca betul2 hehe)"
 
     var formResponse = formResponses[i];
     var itemResponses = formResponse.getItemResponses();
     var itemResponse = itemResponses[0];
     var gifteeNum = arrayNum[i];
-    body += "⭐------------------------------⭐"
-    body += "\nYou will be gifting to number " + gifteeNum + "\n";
+    body += "\n\n⭐------------------------------⭐"
+    body += "\n You will be gifting to number " + gifteeNum + "\n";
     body += "⭐------------------------------⭐"
     //body += itemResponse.getResponse() + "\n\n";
 
@@ -81,11 +100,11 @@ function SecretSantaNumbersEmail() {
       recipientIndex = 0
     }
 
-    body += "\n\n\n⭐------------------------------⭐";
-    body += "\nYour Number is " + arrayNum[recipientIndex];
-    body += "⭐------------------------------⭐";
-    body += "\n\nHere is the padlet link:\https://padlet.com/hivor234/gog25";
-    body += "\nApa2 kemusykilan bole diajukan kepada elvy :D";
+    body += "\n\n\n✨------------------------------✨";
+    body += "\n\tYour Number is " + arrayNum[recipientIndex] + "\n";
+    body += "✨------------------------------✨";
+    body += "\n\nHere is the padlet link:\nhttps://padlet.com/hivor234/gog25";
+    body += "\n\nApa2 kemusykilan bole diajukan kepada ivor, jeremy atau elvy :D";
 
     formResponse2 = formResponses[recipientIndex];
     itemResponses2 = formResponse2.getItemResponses();
@@ -94,21 +113,29 @@ function SecretSantaNumbersEmail() {
     listSanta2 += itemResponse2.getResponse() + " -> " + itemResponse.getResponse() + "\n"
     listSanta += arrayNum[recipientIndex] + " -> " + gifteeNum + "\n"
     var emailAddress = formResponses[recipientIndex].getRespondentEmail()
-    var subject = "Gift Of Grace"
+    var subject = "Gift Of Grace: Exchange Gift";
     
-
-    // CHANGE THIS BEFORE REAL DEAL
-    Logger.log("sending to: " + emailAddress + "\n" + body)
-    //MailApp.sendEmail(emailAddress, subject, body)
+    emailPersonal(emailAddress, subject, body);
   }
-  // CHANGE THIS BEFORE REAL DEAL
-  Logger.log(listSanta)
-  Logger.log(listSanta2)
-  //MailApp.sendEmail("salehasundai0987@gmail.com", "Komsel Gift of Grace: Cozy Edition Full List", listSanta)
-  //MailApp.sendEmail("hivor234@gmail.com", "Komsel Gift of Grace: Cozy Edition Full List", listSanta)
-  //MailApp.sendEmail("hivor234@gmail.com", "Komsel Gift of Grace: Cozy Edition Full List", listSanta2)
+
+  emailFullList(emailPIC, listSanta);
+  emailFullList(emailPIC, listSanta2);
 }
 
+// send individual emails
+function emailPersonal(emailAddress, subject, body) {
+  // CHANGE THIS BEFORE REAL DEAL
+  Logger.log("sending to: " + emailAddress + "\n" + body);
+  MailApp.sendEmail(emailAddress, subject, body)
+}
+
+function emailFullList(emailPIC, listSanta) {
+  // CHANGE THIS BEFORE REAL DEAL
+  Logger.log(listSanta)
+  MailApp.sendEmail(emailPIC, "Komsel Gift of Grace: Cozy Edition Full List", listSanta)  // pic
+}
+
+// shuffle numbers into an array
 function shuffle(array) {
   var tmp, current, top = array.length;
   if(top) while(--top) {
