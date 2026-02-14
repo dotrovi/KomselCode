@@ -13,6 +13,13 @@ To run and send email (for real),
 kalau ada cara lagi bagus untuk debug, guna cara kamu hehe
 */
 
+/*
+Suggestion utk improvement:
+1. usage of 2D arrays to map gifters and giftees
+2. exceptions in case of errors
+3. alang2 guna system tersedia online ja klau malas tengok code ni
+*/
+
 // just names (deprecated, use numbers)
 function sendSecretSantaEmail() {
 
@@ -40,7 +47,7 @@ function sendSecretSantaEmail() {
 
     // insert padlet link here
     body += "Here is the padlet link:\n(padlet link here)";
-    body += "\n\nApa2 kemusykilan bole diajukan kepada elvy :D";
+    body += "\n\nApa2 kemusykilan bole diajukan kepada ... :D";
 
     var recipientIndex = i + 1
     if(recipientIndex >= formResponses.length){
@@ -84,7 +91,7 @@ function SecretSantaNumbersEmail() {
   for (var arrayNum = [], i = 0; i < formResponses.length; i++) arrayNum[i] = i + 1;
   arrayNum = shuffle(arrayNum);
 
-  // Send email for each one
+  // draft email for each one (tukar ikut hati kmu hehe)
   for (var i = 0; i < formResponses.length; i++) {
     var body = `LETS GO GOG 🥳🥳🥳\n`
     body += "\n(jangan tertukar nombor ah, baca betul2 hehe)"
@@ -109,7 +116,7 @@ function SecretSantaNumbersEmail() {
 
     // insert padlet link here
     body += "\n\nHere is the padlet link:\n(padlet link here)";
-    body += "\n\nApa2 kemusykilan bole diajukan kepada ivor, jeremy atau elvy :D";
+    body += "\n\nApa2 kemusykilan bole diajukan kepada ...) :D";
 
     formResponse2 = formResponses[recipientIndex];
     itemResponses2 = formResponse2.getItemResponses();
@@ -131,13 +138,13 @@ function SecretSantaNumbersEmail() {
 function emailPersonal(emailAddress, subject, body) {
   // CHANGE THIS BEFORE REAL DEAL
   Logger.log("sending to: " + emailAddress + "\n" + body);
-  MailApp.sendEmail(emailAddress, subject, body)
+  //MailApp.sendEmail(emailAddress, subject, body)
 }
 
 function emailFullList(emailPIC, listSanta) {
   // CHANGE THIS BEFORE REAL DEAL
   Logger.log(listSanta)
-  MailApp.sendEmail(emailPIC, "Komsel Gift of Grace: Cozy Edition Full List", listSanta)  // pic
+  //MailApp.sendEmail(emailPIC, "Komsel Gift of Grace", listSanta)  // pic
 }
 
 // shuffle numbers into an array
